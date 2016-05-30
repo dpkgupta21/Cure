@@ -24,7 +24,6 @@ public class CustomProgressDialog {
     }
 
 
-
     public static void hideProgressDialog() {
         if (progressDialog != null) {
             progressDialog.dismiss();

@@ -77,7 +77,7 @@ public class CustomAlert {
     }
 
 
-    public void singleButtonAlertDialog(String msg,
+    public void singleButtonAlertDialog( String msg,
                                         String positiveBtn, final String callbackFunc, final Integer requestCode) {
         try {
             LayoutInflater inflater = LayoutInflater.from(context);

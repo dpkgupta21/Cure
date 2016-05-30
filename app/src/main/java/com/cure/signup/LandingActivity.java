@@ -61,14 +61,14 @@ public class LandingActivity extends BaseActivity {
             Map<String, String> params = new HashMap<>();
             params.put("deviceId", CurePreferences.getPushRegistrationId(mActivity));
 
-            final ProgressDialog pdialog = Utils.createProgressDialog(mActivity, null, false);
+            //final ProgressDialog pdialog = Utils.createProgressDialog(mActivity, null, false);
             CustomJsonRequest postReq = new CustomJsonRequest(Request.Method.POST, Constants.SERVICE_URL +
                     Constants.CHECK_LOGIN_METHOD, params,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             Utils.ShowLog(Constants.TAG, "Response -> " + response.toString());
-                            pdialog.dismiss();
+                            //pdialog.dismiss();
                             try {
 
                                 CheckLoginDTO userDTO = new Gson().fromJson(response.toString(), CheckLoginDTO.class);
@@ -85,7 +85,7 @@ public class LandingActivity extends BaseActivity {
 
 
                             } catch (Exception e) {
-                                pdialog.dismiss();
+                                //pdialog.dismiss();
                                 e.printStackTrace();
                             }
                         }
@@ -93,14 +93,14 @@ public class LandingActivity extends BaseActivity {
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    pdialog.dismiss();
+                    //pdialog.dismiss();
                     Intent i = new Intent(mActivity, SplashScreen.class);
                     startActivity(i);
                     finish();
                     //Utils.showExceptionDialog(mActivity);
                 }
             });
-            pdialog.show();
+            //pdialog.show();
             CureApplication.getInstance().getRequestQueue().add(postReq);
             postReq.setRetryPolicy(new DefaultRetryPolicy(
                     30000, 0,

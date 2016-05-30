@@ -21,6 +21,7 @@ import com.cure.model.UserDTO;
 import com.cure.preferences.CurePreferences;
 import com.cure.utility.BaseActivity;
 import com.cure.utility.Constants;
+import com.cure.utility.CustomAlert;
 import com.cure.utility.Utils;
 import com.cure.volley.CustomJsonRequest;
 import com.digits.sdk.android.AuthCallback;
@@ -101,13 +102,21 @@ public class SignUpActivity extends BaseActivity {
 //                                        Intent intent = new Intent(mActivity, MainActivity.class);
 //                                        startActivity(intent);
 //                                        finish();
+                                        if (response.has("redirectTo")) {
+                                            //UserDTO userDTO = new Gson().fromJson(response.getJSONObject("loginData").toString(), UserDTO.class);
+                                            //CurePreferences.putObjectIntoPref(mActivity, userDTO, Constants.USER_INFO);
+                                            Intent intent = new Intent(mActivity, DashboardActivity.class);
+                                            intent.putExtra("redirectURL", Utils.getWebServiceURL(response));
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            new CustomAlert(mActivity, mActivity)
+                                                    .singleButtonAlertDialog(
+                                                            Utils.getWebServiceMessage(response),
+                                                            getString(R.string.ok_button),
+                                                            "singleBtnCallbackResponse", 1000);
 
-                                        UserDTO userDTO = new Gson().fromJson(response.getJSONObject("loginData").toString(), UserDTO.class);
-                                        CurePreferences.putObjectIntoPref(mActivity, userDTO, Constants.USER_INFO);
-                                        Intent intent = new Intent(mActivity, DashboardActivity.class);
-                                        intent.putExtra("redirectURL", Utils.getWebServiceURL(response));
-                                        startActivity(intent);
-                                        finish();
+                                        }
                                     } else {
                                         Utils.showDialog(mActivity, "Error", Utils.getWebServiceMessage(response));
                                     }
@@ -166,5 +175,11 @@ public class SignUpActivity extends BaseActivity {
     public void onBackPressed() {
         startActivity(new Intent(mActivity, MainActivity.class));
 
+    }
+
+    public void singleBtnCallbackResponse(Boolean flag, int code) {
+        if (flag) {
+            startActivity(new Intent(mActivity, MainActivity.class));
+        }
     }
 }

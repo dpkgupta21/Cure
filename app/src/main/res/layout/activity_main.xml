@@ -89,6 +89,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/margin_20">
 
                     <!--<TextView-->
@@ -105,20 +107,11 @@
                         android:id="@+id/txt_sign_up"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
                         android:text="@string/txt_sign_up"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/txt_size_12" />
+                        android:textSize="@dimen/txt_size_15" />
 
-
-                    <TextView
-                        android:id="@+id/txt_forgot"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="@string/txt_forgot_password"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/txt_size_12" />
 
 
                 </RelativeLayout>
@@ -128,7 +121,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/margin_20"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:visibility="invisible">
 
 
                     <TextView
@@ -138,7 +132,8 @@
                         android:gravity="center_vertical"
                         android:text="@string/txt_or"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/txt_size_15" />
+                        android:textSize="@dimen/txt_size_15"
+                        android:visibility="invisible" />
 
                     <ImageView
                         android:id="@+id/img_facebook"
@@ -146,7 +141,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/margin_5dp"
                         android:layout_toRightOf="@+id/txt_or"
-                        android:src="@drawable/fb_icon" />
+                        android:src="@drawable/fb_icon"
+                        android:visibility="invisible" />
 
                     <TextView
                         android:id="@+id/txt_facebook_login"
@@ -157,7 +153,8 @@
                         android:gravity="center_vertical"
                         android:text="@string/txt_facebook_login"
                         android:textColor="@color/face_book_color"
-                        android:textSize="@dimen/txt_size_12" />
+                        android:textSize="@dimen/txt_size_12"
+                        android:visibility="invisible" />
 
 
                 </LinearLayout>
