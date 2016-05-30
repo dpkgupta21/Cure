@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".signup.SplashScreen">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo_new" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/txt_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="@dimen/margin_40"
+            android:text="@string/txt_sign_in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_size_20" />
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="@color/white"></View>
+
+        <TextView
+            android:id="@+id/txt_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/margin_40"
+            android:text="@string/txt_register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_size_20" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

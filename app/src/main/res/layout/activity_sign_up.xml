@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.cure.signup.SignUpActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbar_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_40"
+                android:src="@drawable/logo" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_20">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/txt_full_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_name"
+                    style="@style/et_login_style"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:drawableRight="@drawable/mail_icon"
+                    android:hint="@string/hint_user_name" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:text="@string/txt_user_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_user_name"
+                    style="@style/et_login_style"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:drawableRight="@drawable/mail_icon"
+                    android:hint="@string/hint_user_name" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:text="@string/txt_password"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_password"
+                    style="@style/et_login_style"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:drawableRight="@drawable/lock_icon"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:text="@string/confirm_password"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_confirm_password"
+                    style="@style/et_login_style"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:drawableRight="@drawable/confirm_icon"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword" />
+
+
+                <Button
+                    android:id="@+id/btn_sign_up"
+                    style="@style/btnStyleLogin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:text="@string/txt_btn_sign_up" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
