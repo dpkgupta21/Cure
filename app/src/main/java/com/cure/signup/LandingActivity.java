@@ -43,15 +43,15 @@ public class LandingActivity extends BaseActivity {
         setContentView(R.layout.activity_landing);
 
         mActivity = LandingActivity.this;
-        checkLogin();
-//        TimerTask task = new TimerTask() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        };
-//        timer = new Timer();
-//        timer.schedule(task, splashDelay);
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                checkLogin();
+            }
+        };
+        timer = new Timer();
+        timer.schedule(task, splashDelay);
     }
 
     private void checkLogin() {
