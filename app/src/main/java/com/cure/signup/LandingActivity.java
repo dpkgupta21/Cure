@@ -1,11 +1,16 @@
 package com.cure.signup;
 
+
+import android.animation.Animator;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -31,7 +36,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class LandingActivity extends BaseActivity {
-
     private Context mActivity;
     private long splashDelay = 3000;
     private Timer timer;
@@ -44,15 +48,41 @@ public class LandingActivity extends BaseActivity {
 
         mActivity = LandingActivity.this;
 
-        TimerTask task = new TimerTask() {
+
+        ImageView imageView = (ImageView) findViewById(R.id.img);
+
+        Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadein);
+        fadeIn.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void run() {
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
                 checkLogin();
             }
-        };
-        timer = new Timer();
-        timer.schedule(task, splashDelay);
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        imageView.startAnimation(fadeIn);
+
     }
+
+
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        };
+//        timer = new Timer();
+//        timer.schedule(task, splashDelay);
+//    }
 
     private void checkLogin() {
 
@@ -72,12 +102,12 @@ public class LandingActivity extends BaseActivity {
                             try {
 
                                 CheckLoginDTO userDTO = new Gson().fromJson(response.toString(), CheckLoginDTO.class);
-                                if(userDTO.isStatus()) {
+                                if (userDTO.isStatus()) {
                                     Intent intent = new Intent(mActivity, DashboardActivity.class);
                                     intent.putExtra("redirectURL", userDTO.getRedirectTo());
                                     startActivity(intent);
                                     finish();
-                                }else{
+                                } else {
                                     Intent i = new Intent(mActivity, SplashScreen.class);
                                     startActivity(i);
                                     finish();
@@ -112,5 +142,6 @@ public class LandingActivity extends BaseActivity {
 
 
     }
+
 
 }
