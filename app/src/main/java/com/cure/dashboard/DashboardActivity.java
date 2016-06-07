@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -79,6 +80,7 @@ public class DashboardActivity extends BaseActivity {
         });
 
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(new MyJavaScriptInterface(mActivity), "Android");
         webView.loadUrl(url);
     }
 
@@ -92,6 +94,21 @@ public class DashboardActivity extends BaseActivity {
         }
     }
 
+    public class MyJavaScriptInterface {
+        Activity activity;
+
+        MyJavaScriptInterface(Activity activity) {
+            this.activity = activity;
+        }
+
+        @JavascriptInterface
+        public void logoutUser() {
+            startActivity(new Intent(mActivity, MainActivity.class));
+        }
+
+
+
+    }
 
     private void callLogout() {
         new CustomAlert(mActivity, mActivity)
@@ -107,6 +124,8 @@ public class DashboardActivity extends BaseActivity {
             startActivity(new Intent(mActivity, MainActivity.class));
         }
     }
+
+
 }
 
 

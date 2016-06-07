@@ -1,12 +1,9 @@
 package com.cure.signup;
 
 
-import android.animation.Animator;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -20,7 +17,6 @@ import com.cure.CureApplication;
 import com.cure.R;
 import com.cure.dashboard.DashboardActivity;
 import com.cure.model.CheckLoginDTO;
-import com.cure.model.UserDTO;
 import com.cure.preferences.CurePreferences;
 import com.cure.utility.BaseActivity;
 import com.cure.utility.Constants;
@@ -33,7 +29,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class LandingActivity extends BaseActivity {
     private Context mActivity;
