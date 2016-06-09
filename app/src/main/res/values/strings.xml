@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cure Adviser</string>
+    <string name="app_name">CureAdviser</string>
 
     //Login Page
 
@@ -24,8 +24,8 @@
 
     // Splash Screen
 
-    <string name="txt_sign_in">Sign In</string>
-    <string name="txt_register">Register</string>
+    <string name="txt_sign_in">SIGN IN</string>
+    <string name="txt_register">SIGN UP</string>
 
 
     <string name="are_you">Are you</string>
