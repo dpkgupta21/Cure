@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
+import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -63,6 +64,14 @@ public class DashboardActivity extends BaseActivity {
 //                }
 //            }
 //        });
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                //Required functionality here
+                return super.onJsAlert(view, url, message, result);
+            }
+        });
+
 
         webView.setWebViewClient(new WebViewClient() {
 
@@ -105,7 +114,6 @@ public class DashboardActivity extends BaseActivity {
         public void logoutUser() {
             startActivity(new Intent(mActivity, MainActivity.class));
         }
-
 
 
     }

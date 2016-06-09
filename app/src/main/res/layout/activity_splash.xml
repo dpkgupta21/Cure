@@ -15,7 +15,7 @@
         android:src="@drawable/logo_white"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:paddingBottom="90dp"/>
+        android:paddingBottom="60dp"/>
 
 
     <RelativeLayout
