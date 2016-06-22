@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.http.SslError;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -40,6 +43,9 @@ public class DashboardActivity extends BaseActivity {
 
         mActivity = DashboardActivity.this;
         webView = (WebView) findViewById(R.id.web_view);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);
+
         String url = getIntent().getStringExtra("redirectURL");
         CustomProgressDialog.showProgDialog(mActivity, null);
         loadWebView(url);
@@ -86,9 +92,10 @@ public class DashboardActivity extends BaseActivity {
                 view.loadUrl(url);
                 return true;
             }
+
         });
 
-        webView.getSettings().setJavaScriptEnabled(true);
+
         webView.addJavascriptInterface(new MyJavaScriptInterface(mActivity), "Android");
         webView.loadUrl(url);
     }
@@ -135,5 +142,4 @@ public class DashboardActivity extends BaseActivity {
 
 
 }
-
 
