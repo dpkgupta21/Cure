@@ -7,14 +7,19 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 
+import com.cure.login.MainActivity;
 import com.cure.preferences.CurePreferences;
+import com.cure.signup.LandingActivity;
 import com.google.android.gcm.GCMBaseIntentService;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Calendar;
 
 import static com.cure.CommonUtilities.displayMessage;
@@ -102,116 +107,59 @@ public class GCMIntentService extends GCMBaseIntentService {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private static void generateNotification(Context context, String message, String type) {
-//        int icon = R.mipmap.ic_launcher;
-//        long when = System.currentTimeMillis();
-//        NotificationManager notificationManager = (NotificationManager) context
-//                .getSystemService(Context.NOTIFICATION_SERVICE);
-//        // Notification notification = new Notification(icon, message, when);
-//
-//        String title = message;
-//
-//        Intent notificationIntent = new Intent(context, LandingScreen.class);
-//        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-//                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//        PendingIntent intent = PendingIntent.getActivity(context, 0,
-//                notificationIntent, 0);
-//        //notification.setLatestEventInfo(context, title, message, intent);
-//        //notification.flags |= Notification.FLAG_AUTO_CANCEL;
-//
-//        // Play default notification sound
-//        //  notification.defaults |= Notification.DEFAULT_SOUND;
-//
-//        // Vibrate if vibrate is enabled
-//        //  notification.defaults |= Notification.DEFAULT_VIBRATE;
-//
-//
-//        Notification notification = null;
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-//            notification = new Notification();
-//            notification.icon = R.mipmap.ic_launcher;
-//            try {
-//                Method deprecatedMethod = notification.getClass().getMethod("setLatestEventInfo", Context.class, CharSequence.class, CharSequence.class, PendingIntent.class);
-//                deprecatedMethod.invoke(notification, context, title, message, intent);
-//            } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException
-//                    | InvocationTargetException e) {
-//                Log.w(TAG, "Method not found", e);
-//            }
-//        } else {
-//            // Use new API
-//            Notification.Builder builder = new Notification.Builder(context)
-//                    .setContentIntent(intent)
-//                    .setSmallIcon(R.mipmap.ic_launcher)
-//                    .setContentTitle(title).setContentText(message);
-//            notification = builder.build();
-//        }
-//
-//        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-//
-//        // Play default notification sound
-//        notification.defaults |= Notification.DEFAULT_SOUND;
-//
-//        // Vibrate if vibrate is enabled
-//        notification.defaults |= Notification.DEFAULT_VIBRATE;
-//        notificationManager.notify(0, notification);
+        int icon = R.mipmap.ic_launcher;
+        long when = System.currentTimeMillis();
+        NotificationManager notificationManager = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+        // Notification notification = new Notification(icon, message, when);
+
+        String title = message;
+
+        Intent notificationIntent = new Intent(context, LandingActivity.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent intent = PendingIntent.getActivity(context, 0,
+                notificationIntent, 0);
+        //notification.setLatestEventInfo(context, title, message, intent);
+        //notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        // Play default notification sound
+        //  notification.defaults |= Notification.DEFAULT_SOUND;
+
+        // Vibrate if vibrate is enabled
+        //  notification.defaults |= Notification.DEFAULT_VIBRATE;
 
 
-//        if (message != null) {
-//            int i = (int) Calendar.getInstance().getTimeInMillis();
-//            int icon = R.mipmap.ic_launcher;
-//            long when = System.currentTimeMillis();
-//            NotificationManager notificationManager = (NotificationManager) context
-//                    .getSystemService(Context.NOTIFICATION_SERVICE);
-//            NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-//            builder.setSmallIcon(icon);
-//            builder.setContentText(message);
-//            builder.setWhen(when);
-//            builder.setColor(Color.parseColor("#1f667e"));
-//            String title = context.getString(R.string.app_name);
-//            builder.setContentTitle(title);
-//           // UserDTO userDTO = TraphoriaPreference.getObjectFromPref(context, PreferenceConstant.USER_INFO);
-//            Intent notificationIntent = null;
-//            PendingIntent intent = null;
-//            builder.setContentText(message);
-////            String[] messageArray = message.split(":");
-////
-////            builder.setContentText(messageArray[2]);
-////
-////            String[] subMessageArray = messageArray[1].split(",");
-////
-////
-//            if (userDTO != null) {
-//                if (type.equalsIgnoreCase("CHAT")) {
-//                    notificationIntent = new Intent(context,
-//                            NavigationDrawerActivity.class);
-//                    notificationIntent.putExtra("fragmentNumber", 1);
-//                    notificationIntent.putExtra("subFragmentNumber", 1);
-//                    notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    context.startActivity(notificationIntent);
-//
-//                } else if (type.equalsIgnoreCase("addMember")) {
-//                    notificationIntent = new Intent(context,
-//                            NavigationDrawerActivity.class);
-//                    notificationIntent.putExtra("fragmentNumber", 1);
-//                    notificationIntent.putExtra("subFragmentNumber", 0);
-//                    notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    context.startActivity(notificationIntent);
-//                }
-//
-//                intent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
-//                builder.setContentIntent(intent);
-//            }
-//            Notification notification = builder.build();
-//            notification.flags |= Notification.FLAG_AUTO_CANCEL;
-//
-//            // Play default notification sound
-//            notification.defaults |= Notification.DEFAULT_SOUND;
-//
-//            // Vibrate if vibrate is enabled
-//            notification.defaults |= Notification.DEFAULT_VIBRATE;
-//            notificationManager.notify(i, notification);
-//
-//
-//        }
+        Notification notification = null;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            notification = new Notification();
+            notification.icon = R.mipmap.ic_launcher;
+            try {
+                Method deprecatedMethod = notification.getClass().getMethod("setLatestEventInfo",
+                        Context.class, CharSequence.class, CharSequence.class, PendingIntent.class);
+                deprecatedMethod.invoke(notification, context, title, message, intent);
+            } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException
+                    | InvocationTargetException e) {
+                Log.w(TAG, "Method not found", e);
+            }
+        } else {
+            // Use new API
+            Notification.Builder builder = new Notification.Builder(context)
+                    .setContentIntent(intent)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentTitle(title).setContentText(message);
+            notification = builder.build();
+        }
+
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        // Play default notification sound
+        notification.defaults |= Notification.DEFAULT_SOUND;
+
+        // Vibrate if vibrate is enabled
+        notification.defaults = Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE;
+
+        notificationManager.notify(0, notification);
 
 
     }
